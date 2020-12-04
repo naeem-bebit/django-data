@@ -19,3 +19,9 @@
    ```console
    $ python3 manage.py startapp authenticate
    ```
+
+1. Adding superuser(admin)
+
+   ```console
+   python manage.py createsuperuser
+   ```
