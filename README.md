@@ -23,5 +23,5 @@
 1. Adding superuser(admin)
 
    ```console
-   python manage.py createsuperuser
+   $ python manage.py createsuperuser
    ```

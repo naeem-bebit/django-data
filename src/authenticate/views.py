@@ -18,7 +18,7 @@ def login_user(request):
         return redirect('home')
     else:
         messages.success(request, ('Error Logging In. Please Try Again'))
-        return redirect('login')
+        return redirect('login_user')
   else:
     return render(request, 'authenticate/login.html', {})
   
