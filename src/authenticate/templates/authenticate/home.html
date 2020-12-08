@@ -4,5 +4,12 @@
 
 <h1>This is the home page</h1>
 <button type="button" class="btn btn-secondary">Secondary</button>
+{% if user.is_authenticated %}
+  <p>Username: {{ user.username }}</p>
+  <p>Password: {{ user.password }}</p>
+  <p>Email: {{ user.email }}</p>
+  <p>First Name: {{ user.first_name }}</p>
+  <p>Last Name: {{ user.last_name }}</p>
+{% endif %}
 
 {% endblock %}
