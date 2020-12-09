@@ -23,6 +23,9 @@ def login_user(request):
     return render(request, 'authenticate/login.html', {})
 
 def logout_user(request):
-    logout(request)
-    messages.success(request, ('You Have Been Logged Out'))
-    return redirect('home')
+  logout(request)
+  messages.success(request, ('You Have Been Logged Out'))
+  return redirect('home')
+  
+def register_user(request):
+  return render(request, 'authenticate/register.html', {})
