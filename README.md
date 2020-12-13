@@ -9,6 +9,7 @@
 
    ```console
    $ python3 manage.py runserver
+   $ python manage.py makemigrations #Make changes to your models and run migrate
    $ python3 manage.py migrate
    ```
 

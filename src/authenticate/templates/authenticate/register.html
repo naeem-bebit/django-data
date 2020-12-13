@@ -4,13 +4,13 @@
 
 <h2>User Registration</h2>  
 
-<form method="POST" action="{% url 'register_user' %}"
+<form method="POST" action="{% url 'register_user' %}">
 
   {% csrf_token %}
   {% if form.errors %}
-    <p>Your forms have error</p>
+    <p style="color:red;">Your form has error</p>
   {% endif%}
-  {{ form }}
+  {{ form.as_p }}
   <input type="submit" value="Register" class="btn btn-secondary">
 </form>
 {% endblock %}
