@@ -2,15 +2,16 @@
 
 {% block content %}
 
-<h2>User Registration</h2>  
+<h2 class="text-center" >User Registration</h2>  
+<div class="col-md-6 offset-md-3">
+  <form method="POST" action="{% url 'register_user' %}">
 
-<form method="POST" action="{% url 'register_user' %}">
-
-  {% csrf_token %}
-  {% if form.errors %}
-    <p style="color:red;">Your form has error</p>
-  {% endif%}
-  {{ form.as_p }}
-  <input type="submit" value="Register" class="btn btn-secondary">
-</form>
+    {% csrf_token %}
+    {% if form.errors %}
+      <p style="color:red;">Your form has error</p>
+    {% endif%}
+    {{ form.as_p }}
+    <input type="submit" value="Register" class="btn btn-secondary">
+  </form>
+</div>
 {% endblock %}
