@@ -8,7 +8,17 @@
 
     {% csrf_token %}
     {% if form.errors %}
-      <p style="color:red;">Your form has error</p>
+      <div class="alert alert-warning alert-dismissable" role="alert">
+        <button class="close" data-dismis="alert"><small><sup>x</sup></small>
+        </button>
+        {{ message }}
+        <p style="color:red;">Your form has error</p>
+        {% for field in form %}
+          {% if field.errors %}
+            {{ field.errors }}
+          {% endif %}
+        {% endfor %}
+      </div>
     {% endif%}
     {{ form.as_p }}
     <input type="submit" value="Register" class="btn btn-secondary">
