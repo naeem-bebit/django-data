@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib import messages
-from .forms import SignUpForm
+from .forms import SignUpForm, EditProfile
 
 
 def home(request):
@@ -31,7 +31,7 @@ def logout_user(request):
   
 def register_user(request):
   if request.method == 'POST':
-    form = SignUpForm(request.POST)
+    form = EditProfile(request.POST)
     if form.is_valid():
       form.save()
       username = form.cleaned_data['username']
@@ -42,7 +42,7 @@ def register_user(request):
       return redirect('home')
       
   else:
-    form = SignUpForm()
+    form = EditProfile()
   context = {'form':form}
   return render(request, 'authenticate/register.html', context)
 
