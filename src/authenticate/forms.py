@@ -5,7 +5,7 @@ from django import forms
 class EditProfile(UserChangeForm):
   class Meta:
     model = User
-    fields = ('username', 'first_name', 'last_name', 'email', 'password1',)
+    fields = ('username', 'first_name', 'last_name', 'email', 'password',)
 
 
 class SignUpForm(UserCreationForm):

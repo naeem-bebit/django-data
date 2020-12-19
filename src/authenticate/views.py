@@ -1,7 +1,7 @@
 """View url."""
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib import messages
 from .forms import SignUpForm, EditProfile
 
@@ -31,7 +31,7 @@ def logout_user(request):
   
 def register_user(request):
   if request.method == 'POST':
-    form = EditProfile(request.POST)
+    form = UserChangeForm(request.POST)
     if form.is_valid():
       form.save()
       username = form.cleaned_data['username']
@@ -42,19 +42,32 @@ def register_user(request):
       return redirect('home')
       
   else:
-    form = EditProfile()
+    form = UserChangeForm(instance=request.user)
   context = {'form':form}
   return render(request, 'authenticate/register.html', context)
 
 def edit_profile(request):
   if request.method == 'POST':
-    form = UserChangeForm(request.POST, instance=request.user)
+    form = EditProfile(request.POST, instance=request.user)
     if form.is_valid():
       form.save()
       messages.success(request, ('You Have Edited Your Profile'))
       return redirect('home')
       
   else:
-    form = UserChangeForm(instance=request.user)
+    form = EditProfile(instance=request.user)
   context = {'form':form}
   return render(request, 'authenticate/edit_profile.html', context)
+
+def change_password(request):
+  if request.method == 'POST':
+    form = PasswordChangeForm(data=request.POST, user=request.user)
+    if form.is_valid():
+      form.save()
+      messages.success(request, ('You Have Changed Your Password'))
+      return redirect('home')
+      
+  else:
+    form = PasswordChangeForm(user=request.user)
+  context = {'form':form}
+  return render(request, 'authenticate/change_password.html', context)
