@@ -3,9 +3,10 @@ from django.contrib.auth.models import User
 from django import forms
 
 class EditProfile(UserChangeForm):
+  password = forms.CharField(widget=forms.TextInput(attrs={'type': 'hidden'}))
   class Meta:
     model = User
-    fields = ('username', 'first_name', 'last_name', 'email', 'password',)
+    fields = ('username', 'first_name', 'last_name', 'email', ' ',)
 
 
 class SignUpForm(UserCreationForm):
