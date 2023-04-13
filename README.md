@@ -5,7 +5,7 @@
    ```
 
 1. Create a new project
-   `mlapps` is the name of the project
+   - `mlapps` is the name of the project
 
    ```console
    $ django-admin startproject mlapps .
