@@ -1,4 +1,10 @@
-1. Create the project,
+1. Create virtualenv
+   ```console
+   python -m venv env#name of the virtualenv
+   env\Scripts\activate
+   ```
+
+1. Create the project
    `mlapps` is the name of the project
 
    ```console
