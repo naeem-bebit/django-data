@@ -4,7 +4,7 @@
    env\Scripts\activate
    ```
 
-1. Create the project
+1. Create a new project
    `mlapps` is the name of the project
 
    ```console
